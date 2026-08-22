@@ -1,19 +1,28 @@
 # SevaSetu
 
-A simple NGO Management System built with Django.
+SevaSetu is a web-based NGO Management System developed using Django and Bootstrap.
 
 ## Features
+
 - Campaign Management
 - Volunteer Registration
 - Donation Tracking
-- Gallery
-- Contact Messages
+- Gallery Management
+- Contact Management
+- User Authentication
 - Admin Dashboard
 
-## Tech Stack
+## Technology Stack
+
 - Python
 - Django
 - SQLite
 - Bootstrap 5
+- HTML/CSS
 
-Designed as a clean academic project with a professional UI and simple architecture.
+## Installation
+
+```bash
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
