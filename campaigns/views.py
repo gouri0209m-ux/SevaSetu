@@ -1,3 +1,23 @@
 from django.shortcuts import render
+from .models import Campaign
 
-# Create your views here.
+
+def campaign_list(request):
+    campaigns = Campaign.objects.all()
+
+    return render(
+        request,
+        'campaigns/campaign_list.html',
+        {'campaigns': campaigns}
+    )
+
+
+def campaign_detail(request, id):
+
+    campaign = Campaign.objects.get(id=id)
+
+    return render(
+        request,
+        'campaigns/campaign_detail.html',
+        {'campaign': campaign}
+    )

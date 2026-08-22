@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h1>
+{{ campaign.title }}
+</h1>
+
+<p class="text-muted">
+{{ campaign.location }}
+</p>
+
+<p>
+{{ campaign.description }}
+</p>
+
+<div class="mt-4">
+
+<strong>
+Target Amount:
+</strong>
+
+₹{{ campaign.target_amount }}
+
+</div>
+
+</div>
+
+{% endblock %}
