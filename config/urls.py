@@ -6,4 +6,5 @@ urlpatterns = [
     path('', include('core.urls')),
     path( 'campaigns/', include('campaigns.urls')),
     path( 'accounts/', include('accounts.urls')),
+    path('', include('engagement.urls')),
 ]
