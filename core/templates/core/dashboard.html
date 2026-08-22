@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h1 class="mb-4">
+Dashboard
+</h1>
+
+<div class="row">
+
+<div class="col-md-3">
+
+<div class="card p-4 text-center">
+
+<h2>
+{{ campaign_count }}
+</h2>
+
+<p>
+Campaigns
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card p-4 text-center">
+
+<h2>
+{{ volunteer_count }}
+</h2>
+
+<p>
+Volunteers
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card p-4 text-center">
+
+<h2>
+{{ donation_count }}
+</h2>
+
+<p>
+Donations
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card p-4 text-center">
+
+<h2>
+{{ message_count }}
+</h2>
+
+<p>
+Messages
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
