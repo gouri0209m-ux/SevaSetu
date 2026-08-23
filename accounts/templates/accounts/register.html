@@ -1,23 +1,49 @@
 {% extends 'base.html' %}
 
+{% block title %}Register | SevaSetu{% endblock %}
+
 {% block content %}
+<section class="page-header">
+    <div class="container">
+        <span class="eyebrow">Join SevaSetu</span>
+        <h1 class="page-title">Create your account.</h1>
+        <p class="page-intro">Register to take part in campaigns and community activities.</p>
+    </div>
+</section>
 
-<div class="container py-5">
+<section class="form-section">
+    <div class="container">
+        <div class="auth-card form-card">
+            <form method="post" novalidate>
+                {% csrf_token %}
 
-<h2>Register</h2>
+                {% if form.non_field_errors %}
+                    <div class="form-error-box">{{ form.non_field_errors }}</div>
+                {% endif %}
 
-<form method="post">
+                <div class="form-field">
+                    <label for="{{ form.username.id_for_label }}">Username</label>
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
 
-{% csrf_token %}
+                <div class="form-field">
+                    <label for="{{ form.email.id_for_label }}">Email</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
 
-{{ form.as_p }}
+                <div class="form-field">
+                    <label for="{{ form.password.id_for_label }}">Password</label>
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                </div>
 
-<button class="btn btn-success">
-Register
-</button>
+                <button type="submit" class="btn btn-accent w-100">Create account</button>
+            </form>
 
-</form>
-
-</div>
-
+            <p class="auth-switch">Already registered? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+</section>
 {% endblock %}
