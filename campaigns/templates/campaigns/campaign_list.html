@@ -1,53 +1,46 @@
 {% extends 'base.html' %}
 
+{% block title %}Campaigns | SevaSetu{% endblock %}
+
 {% block content %}
+<section class="page-header">
+    <div class="container">
+        <span class="eyebrow">Our work</span>
+        <h1 class="page-title">Campaigns</h1>
+        <p class="page-intro">Support a cause and help turn small actions into real impact.</p>
+    </div>
+</section>
 
-<div class="container py-5">
+<section class="section-space">
+    <div class="container">
+        <div class="campaign-grid">
+            {% for campaign in campaigns %}
+            <article class="campaign-card campaign-list-card">
+                {% if campaign.image %}
+                    <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
+                {% else %}
+                    <div class="campaign-placeholder">SevaSetu</div>
+                {% endif %}
 
-<h1 class="mb-4">
-Campaigns
-</h1>
+                <div class="campaign-card-body">
+                    <span class="status-pill">{{ campaign.status }}</span>
+                    <h2>{{ campaign.title }}</h2>
+                    <p>{{ campaign.description|truncatewords:22 }}</p>
 
-<div class="row">
+                    <div class="campaign-meta">
+                        <span>{{ campaign.location }}</span>
+                        <span>₹{{ campaign.target_amount }}</span>
+                    </div>
 
-{% for campaign in campaigns %}
-
-<div class="col-md-4 mb-4">
-
-<div class="card shadow-sm h-100">
-
-{% if campaign.image %}
-<img src="{{ campaign.image.url }}"
-     class="card-img-top">
-{% endif %}
-
-<div class="card-body">
-
-<h5>
-{{ campaign.title }}
-</h5>
-
-<p>
-{{ campaign.description|truncatewords:15 }}
-</p>
-
-<a href="{% url 'campaign_detail' campaign.id %}"
-   class="btn btn-success">
-
-View Details
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-{% endfor %}
-
-</div>
-
-</div>
-
+                    <a href="{% url 'campaign_detail' campaign.id %}" class="btn btn-dark">View details</a>
+                </div>
+            </article>
+            {% empty %}
+            <div class="empty-state">
+                No campaigns are available at the moment.
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
