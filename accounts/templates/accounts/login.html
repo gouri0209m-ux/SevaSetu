@@ -1,32 +1,37 @@
 {% extends 'base.html' %}
 
+{% block title %}Login | SevaSetu{% endblock %}
+
 {% block content %}
+<section class="page-header">
+    <div class="container">
+        <span class="eyebrow">Welcome back</span>
+        <h1 class="page-title">Sign in to SevaSetu.</h1>
+        <p class="page-intro">Access your account and continue supporting causes.</p>
+    </div>
+</section>
 
-<div class="container py-5">
+<section class="form-section">
+    <div class="container">
+        <div class="auth-card form-card">
+            <form method="post" novalidate>
+                {% csrf_token %}
 
-<h2>Login</h2>
+                <div class="form-field">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" class="form-control" placeholder="Enter your username" autocomplete="username" required>
+                </div>
 
-<form method="post">
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+                </div>
 
-{% csrf_token %}
+                <button type="submit" class="btn btn-accent w-100">Login</button>
+            </form>
 
-<input
-name="username"
-class="form-control mb-3"
-placeholder="Username">
-
-<input
-name="password"
-type="password"
-class="form-control mb-3"
-placeholder="Password">
-
-<button class="btn btn-success">
-Login
-</button>
-
-</form>
-
-</div>
-
+            <p class="auth-switch">New to SevaSetu? <a href="{% url 'register' %}">Create an account</a></p>
+        </div>
+    </div>
+</section>
 {% endblock %}
