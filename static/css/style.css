@@ -1,12 +1,40 @@
-body{
-    background:#f8f9fa;
+body {
+    background: #f8f9fa;
+    color: #212529;
 }
 
-.hero{
-    padding:100px 0;
+.navbar-brand {
+    letter-spacing: 0.2px;
 }
 
-.card{
-    border:none;
-    border-radius:15px;
+.card {
+    border: 0;
+    border-radius: 14px;
+}
+
+.card-img-top,
+.gallery-image {
+    object-fit: cover;
+}
+
+.gallery-image {
+    height: 230px;
+    width: 100%;
+}
+
+.page-section {
+    padding: 72px 0;
+}
+
+.hero-image {
+    min-height: 360px;
+    object-fit: cover;
+}
+
+.stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
 }
