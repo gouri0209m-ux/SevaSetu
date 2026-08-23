@@ -5,13 +5,15 @@ from engagement.models import ContactMessage, Donation, VolunteerApplication
 
 
 def home(request):
-    campaigns = Campaign.objects.all().order_by('-created_at')[:3]
+    campaigns = Campaign.objects.all().order_by('-id')[:3]
+
     context = {
         'campaigns': campaigns,
         'campaign_count': Campaign.objects.count(),
         'volunteer_count': VolunteerApplication.objects.count(),
         'donation_count': Donation.objects.count(),
     }
+
     return render(request, 'core/home.html', context)
 
 
@@ -31,7 +33,12 @@ def contact(request):
             subject=request.POST.get('subject'),
             message=request.POST.get('message')
         )
-        return render(request, 'core/contact.html', {'success': True})
+
+        return render(
+            request,
+            'core/contact.html',
+            {'success': True}
+        )
 
     return render(request, 'core/contact.html')
 
@@ -43,4 +50,5 @@ def dashboard(request):
         'donation_count': Donation.objects.count(),
         'message_count': ContactMessage.objects.count(),
     }
+
     return render(request, 'core/dashboard.html', context)
