@@ -1,25 +1,71 @@
 {% extends 'base.html' %}
 
+{% block title %}Volunteer | SevaSetu{% endblock %}
+
 {% block content %}
+<section class="page-header">
+    <div class="container">
+        <span class="eyebrow">Get involved</span>
+        <h1 class="page-title">Become a volunteer.</h1>
+        <p class="page-intro">Choose a campaign and tell us how you can help.</p>
+    </div>
+</section>
 
-<div class="container py-5">
+<section class="form-section">
+    <div class="container">
+        <div class="form-layout">
+            <div class="form-aside">
+                <div class="form-aside-number">01</div>
+                <h2>Give your time where it matters.</h2>
+                <p>Share your details and skills. Your application will be available to the NGO team.</p>
+            </div>
 
-<h2>
-Volunteer Registration
-</h2>
+            <div class="form-card">
+                <form method="post" novalidate>
+                    {% csrf_token %}
 
-<form method="post">
+                    {% if form.non_field_errors %}
+                        <div class="form-error-box">{{ form.non_field_errors }}</div>
+                    {% endif %}
 
-{% csrf_token %}
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="{{ form.name.id_for_label }}">Full name</label>
+                            {{ form.name }}
+                            {{ form.name.errors }}
+                        </div>
 
-{{ form.as_p }}
+                        <div class="form-field">
+                            <label for="{{ form.email.id_for_label }}">Email</label>
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
 
-<button class="btn btn-success">
-Apply
-</button>
+                        <div class="form-field">
+                            <label for="{{ form.phone.id_for_label }}">Phone</label>
+                            {{ form.phone }}
+                            {{ form.phone.errors }}
+                        </div>
 
-</form>
+                        <div class="form-field">
+                            <label for="{{ form.campaign.id_for_label }}">Campaign</label>
+                            {{ form.campaign }}
+                            {{ form.campaign.errors }}
+                        </div>
 
-</div>
+                        <div class="form-field form-field-full">
+                            <label for="{{ form.skills.id_for_label }}">Skills or interests</label>
+                            {{ form.skills }}
+                            {{ form.skills.errors }}
+                        </div>
+                    </div>
 
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-accent">Submit application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
