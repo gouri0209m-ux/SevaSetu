@@ -4,28 +4,25 @@
 
 {% block content %}
 <section class="hero-section">
-    <div class="container py-5">
-        <div class="row align-items-center g-5 py-lg-4">
-            <div class="col-lg-7">
-                <span class="eyebrow">Community • Care • Action</span>
-                <h1 class="display-3 fw-bold hero-title mt-3 mb-4">
-                    Small actions can create a bigger impact.
-                </h1>
-                <p class="hero-copy mb-4">
-                    Discover campaigns, volunteer your time and support communities through SevaSetu.
-                </p>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="{% url 'campaign_list' %}" class="btn btn-accent btn-lg px-4">Explore Campaigns</a>
-                    <a href="{% url 'donate' %}" class="btn btn-outline-dark btn-lg px-4">Donate</a>
-                </div>
+    <div class="hero-grid">
+        <div class="hero-copy-block">
+            <span class="eyebrow">Community • Care • Action</span>
+            <h1 class="hero-title">Small actions can create a bigger impact.</h1>
+            <p class="hero-copy mb-4">
+                Discover campaigns, volunteer your time and support communities through SevaSetu.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="{% url 'campaign_list' %}" class="btn btn-accent btn-lg">Explore Campaigns</a>
+                <a href="{% url 'donate' %}" class="btn btn-outline-dark btn-lg">Donate</a>
             </div>
-            <div class="col-lg-5">
-                <div class="hero-photo">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1100&q=85" alt="Community support">
-                    <div class="hero-note">
-                        <span class="hero-note-number">{{ campaign_count }}</span>
-                        <span>active campaigns</span>
-                    </div>
+        </div>
+
+        <div class="hero-media">
+            <div class="hero-photo">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1100&q=85" alt="Community support">
+                <div class="hero-note">
+                    <span class="hero-note-number">{{ campaign_count }}</span>
+                    <span>active campaigns</span>
                 </div>
             </div>
         </div>
@@ -33,76 +30,67 @@
 </section>
 
 <section class="impact-strip">
-    <div class="container py-4">
-        <div class="row g-4 text-center">
-            <div class="col-md-4">
-                <div class="impact-item">
-                    <strong>{{ campaign_count }}</strong>
-                    <span>Campaigns</span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="impact-item">
-                    <strong>{{ volunteer_count }}</strong>
-                    <span>Volunteer Applications</span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="impact-item">
-                    <strong>{{ donation_count }}</strong>
-                    <span>Donations</span>
-                </div>
-            </div>
+    <div class="impact-grid">
+        <div class="impact-item">
+            <strong>{{ campaign_count }}</strong>
+            <span>Campaigns</span>
+        </div>
+        <div class="impact-item">
+            <strong>{{ volunteer_count }}</strong>
+            <span>Volunteer Applications</span>
+        </div>
+        <div class="impact-item">
+            <strong>{{ donation_count }}</strong>
+            <span>Donations</span>
         </div>
     </div>
 </section>
 
-<section class="container py-5 my-lg-3">
-    <div class="section-heading mb-4">
+<section class="home-section">
+    <div class="section-heading">
         <div>
             <span class="eyebrow">Featured</span>
-            <h2 class="section-title mt-2">Causes worth showing up for.</h2>
+            <h2 class="section-title">Causes worth showing up for.</h2>
         </div>
         <a href="{% url 'campaign_list' %}" class="text-link">View all campaigns →</a>
     </div>
 
-    <div class="row g-4">
+    <div class="campaign-grid">
         {% for campaign in campaigns %}
-        <div class="col-md-4">
-            <article class="campaign-card h-100">
-                {% if campaign.image %}
-                    <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
-                {% else %}
-                    <div class="campaign-placeholder">SevaSetu</div>
-                {% endif %}
-                <div class="p-4 d-flex flex-column h-100">
-                    <span class="status-pill mb-3">{{ campaign.status }}</span>
-                    <h3 class="h5 fw-bold mb-2">{{ campaign.title }}</h3>
-                    <p class="text-muted mb-4">{{ campaign.description|truncatewords:18 }}</p>
-                    <div class="mt-auto d-flex justify-content-between align-items-center gap-3">
-                        <small class="text-muted">{{ campaign.location }}</small>
-                        <a href="{% url 'campaign_detail' campaign.id %}" class="btn btn-dark btn-sm px-3">Details</a>
-                    </div>
+        <article class="campaign-card">
+            {% if campaign.image %}
+                <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
+            {% else %}
+                <div class="campaign-placeholder">SevaSetu</div>
+            {% endif %}
+
+            <div class="campaign-body">
+                <span class="status-pill mb-3">{{ campaign.status }}</span>
+                <h3 class="h5 fw-bold mb-2">{{ campaign.title }}</h3>
+                <p class="text-muted mb-4">{{ campaign.description|truncatewords:18 }}</p>
+
+                <div class="campaign-meta">
+                    <small class="text-muted">{{ campaign.location }}</small>
+                    <a href="{% url 'campaign_detail' campaign.id %}" class="btn btn-dark btn-sm">Details</a>
                 </div>
-            </article>
-        {% empty %}
-            <div class="col-12">
-                <div class="empty-state">No campaigns available yet.</div>
             </div>
+        </article>
+        {% empty %}
+        <div class="empty-state">No campaigns available yet.</div>
         {% endfor %}
     </div>
 </section>
 
-<section class="container pb-5 mb-lg-4">
-    <div class="cta-panel p-4 p-lg-5">
-        <div class="row align-items-center g-4">
-            <div class="col-lg-8">
+<section class="home-section">
+    <div class="cta-panel">
+        <div class="cta-grid">
+            <div>
                 <span class="eyebrow">Get involved</span>
-                <h2 class="section-title mt-2 mb-2">Your time can matter as much as your donation.</h2>
+                <h2 class="section-title">Your time can matter as much as your donation.</h2>
                 <p class="mb-0 text-muted">Join a campaign and become part of the work happening in your community.</p>
             </div>
-            <div class="col-lg-4 text-lg-end">
-                <a href="{% url 'volunteer_apply' %}" class="btn btn-accent btn-lg px-4">Become a Volunteer</a>
+            <div>
+                <a href="{% url 'volunteer_apply' %}" class="btn btn-accent btn-lg">Become a Volunteer</a>
             </div>
         </div>
     </div>
