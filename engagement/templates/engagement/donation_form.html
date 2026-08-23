@@ -1,25 +1,65 @@
 {% extends 'base.html' %}
 
+{% block title %}Donate | SevaSetu{% endblock %}
+
 {% block content %}
+<section class="page-header">
+    <div class="container">
+        <span class="eyebrow">Support a cause</span>
+        <h1 class="page-title">Make a donation.</h1>
+        <p class="page-intro">Every contribution helps a campaign move forward.</p>
+    </div>
+</section>
 
-<div class="container py-5">
+<section class="form-section">
+    <div class="container">
+        <div class="form-layout">
+            <div class="form-aside form-aside-accent">
+                <div class="form-aside-number">02</div>
+                <h2>Support work that creates impact.</h2>
+                <p>Select a campaign and enter the amount you would like to contribute.</p>
+            </div>
 
-<h2>
-Make a Donation
-</h2>
+            <div class="form-card">
+                <form method="post" novalidate>
+                    {% csrf_token %}
 
-<form method="post">
+                    {% if form.non_field_errors %}
+                        <div class="form-error-box">{{ form.non_field_errors }}</div>
+                    {% endif %}
 
-{% csrf_token %}
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="{{ form.name.id_for_label }}">Full name</label>
+                            {{ form.name }}
+                            {{ form.name.errors }}
+                        </div>
 
-{{ form.as_p }}
+                        <div class="form-field">
+                            <label for="{{ form.email.id_for_label }}">Email</label>
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
 
-<button class="btn btn-success">
-Donate
-</button>
+                        <div class="form-field">
+                            <label for="{{ form.campaign.id_for_label }}">Campaign</label>
+                            {{ form.campaign }}
+                            {{ form.campaign.errors }}
+                        </div>
 
-</form>
+                        <div class="form-field">
+                            <label for="{{ form.amount.id_for_label }}">Amount (₹)</label>
+                            {{ form.amount }}
+                            {{ form.amount.errors }}
+                        </div>
+                    </div>
 
-</div>
-
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-accent">Submit donation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
