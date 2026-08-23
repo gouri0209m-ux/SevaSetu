@@ -1,21 +1,81 @@
 {% extends 'base.html' %}
 
+{% block title %}About | SevaSetu{% endblock %}
+
 {% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+            <div class="col-lg-7">
+                <span class="eyebrow">About SevaSetu</span>
+                <h1 class="section-title mb-4">A simple platform for meaningful community action.</h1>
+                <p class="lead text-soft">
+                    SevaSetu is an NGO Management System created to bring campaigns, volunteers,
+                    donations and community communication into one easy-to-use platform.
+                </p>
+                <p class="text-soft">
+                    The project provides a practical digital space where people can discover social
+                    campaigns, contribute their time, support causes and stay connected with NGO activities.
+                    It also helps administrators keep important records organized in one place.
+                </p>
+            </div>
 
-<div class="container py-5">
+            <div class="col-lg-5">
+                <div class="about-summary">
+                    <div class="about-summary-item">
+                        <span>Purpose</span>
+                        <strong>Connect people with causes.</strong>
+                    </div>
+                    <div class="about-summary-item">
+                        <span>Platform</span>
+                        <strong>Django-based NGO management.</strong>
+                    </div>
+                    <div class="about-summary-item">
+                        <span>Focus</span>
+                        <strong>Campaigns, volunteers and donations.</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h1 class="mb-4">About SevaSetu</h1>
+        <div class="row g-4 mt-5">
+            <div class="col-md-4">
+                <div class="about-card h-100">
+                    <span class="eyebrow">01</span>
+                    <h2>Discover</h2>
+                    <p class="text-soft mb-0">
+                        Explore campaigns and community initiatives in one place.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="about-card h-100">
+                    <span class="eyebrow">02</span>
+                    <h2>Participate</h2>
+                    <p class="text-soft mb-0">
+                        Volunteer your skills, time and support for selected campaigns.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="about-card h-100">
+                    <span class="eyebrow">03</span>
+                    <h2>Manage</h2>
+                    <p class="text-soft mb-0">
+                        Keep campaign, volunteer, donation and contact records organized.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-    <p>
-        SevaSetu is an NGO Management System designed to connect
-        volunteers, donors and communities through social campaigns.
-    </p>
-
-    <p>
-        The platform helps NGOs manage campaigns, donations,
-        volunteers and outreach activities efficiently.
-    </p>
-
-</div>
-
+        <div class="about-note mt-5">
+            <span class="eyebrow">Project vision</span>
+            <h2 class="section-title mt-2 mb-3">Make social participation easier to access, understand and manage.</h2>
+            <p class="text-soft mb-0">
+                SevaSetu is designed as a focused academic project, combining a clean user interface
+                with simple database-driven features that can be extended as the platform grows.
+            </p>
+        </div>
+    </div>
+</section>
 {% endblock %}
